@@ -1,14 +1,76 @@
-# Project
+# “Fifty Shades of Bias”: Normative Ratings of Gender Bias in GPT
+Generated English Text
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+Language serves as a powerful tool for the manifestation of societal belief systems. In doing so, it also perpetuates the prevalent biases in our society. Gender bias is one of the most pervasive biases in our society and is seen in online and offline discourses. With LLMs increasingly gaining human-like fluency in text generation, gaining a nuanced understanding of the biases these systems can generate is imperative. Prior work often treats gender bias as a binary classification task. However, acknowledging that bias must be perceived at a relative scale; we investigate the generation and consequent receptivity of manual annotators to bias of varying degrees. Specifically, we create the first dataset of GPT-generated English text with normative ratings of gender bias. Ratings were obtained using Best–Worst Scaling – an efficient comparative annotation framework. Next, we systematically analyze the variation of themes of gender biases in the observed ranking and show that identity-attack is most closely related to gender bias. Finally, we show the performance of existing automated models trained on related concepts on our dataset.
 
-As the maintainer of this project, please make a few updates:
+The paper can be found at: **[“Fifty Shades of Bias”: Normative Ratings of Gender Bias in GPT Generated English Text](https://aclanthology.org/2023.emnlp-main.115.pdf)**
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+Our online talk at EMNLP’23 can be found [here](https://screenpal.com/watch/c0lY1oVHlrm).
+
+If you use our work, please cite us:
+
+```bash
+@inproceedings{hada-etal-2023-fifty,
+    title = "{``}Fifty Shades of Bias{''}: Normative Ratings of Gender Bias in {GPT} Generated {E}nglish Text",
+    author = "Hada, Rishav  and
+      Seth, Agrima  and
+      Diddee, Harshita  and
+      Bali, Kalika",
+    editor = "Bouamor, Houda  and
+      Pino, Juan  and
+      Bali, Kalika",
+    booktitle = "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing",
+    month = dec,
+    year = "2023",
+    address = "Singapore",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.emnlp-main.115",
+    doi = "10.18653/v1/2023.emnlp-main.115",
+    pages = "1862--1876",
+    abstract = "Language serves as a powerful tool for the manifestation of societal belief systems. In doing so, it also perpetuates the prevalent biases in our society. Gender bias is one of the most pervasive biases in our society and is seen in online and offline discourses. With LLMs increasingly gaining human-like fluency in text generation, gaining a nuanced understanding of the biases these systems can generate is imperative. Prior work often treats gender bias as a binary classification task. However, acknowledging that bias must be perceived at a relative scale; we investigate the generation and consequent receptivity of manual annotators to bias of varying degrees. Specifically, we create the first dataset of GPT-generated English text with normative ratings of gender bias. Ratings were obtained using Best{--}Worst Scaling {--} an efficient comparative annotation framework. Next, we systematically analyze the variation of themes of gender biases in the observed ranking and show that identity-attack is most closely related to gender bias. Finally, we show the performance of existing automated models trained on related concepts on our dataset.",
+}
+```
+
+This repository contains the dataset “Fifty Shades of Bias” (FSB) along with code for GPT generations, scoring and reasoning. The repository is structured as follows:
+
+```bash
+.
+├── CODE_OF_CONDUCT.md
+├── LICENSE
+├── README.md
+├── SECURITY.md
+├── SUPPORT.md
+├── data
+│   ├── FSB
+│   │   ├── FSB_text.csv
+│   │   ├── fsb-tuples-annotations.csv
+│   │   └── fsb_final_scores.csv
+│   ├── in_context_examples
+│   │   ├── explicit_completion_ic.json
+│   │   ├── explicit_conversion_ic.json
+│   │   ├── implicit_completion_ic.json
+│   │   ├── implicit_conversion_ic.json
+│   │   ├── neutral_completion_ic.json
+│   │   └── neutral_conversion_ic.json
+│   └── seeds
+│       ├── explict_bias_seed.txt
+│       ├── implicit_bias_seed.txt
+│       └── neutral_bias_seed.txt
+├── FSB_Underline.pdf
+├── index.html
+├── requirements.txt
+├── scripts
+│   ├── generate_biased_sentences.py
+│   ├── gpt_reasoning.py
+│   ├── gpt_scoring.py
+│   └── utils.py
+└── tree.md
+```
+
+- **Dataset** contains the FSB dataset, the aggregate scores and individual annotations, the seed set, and the in context examples. *Note: As we continue working on this project, we have gathered additional annotations post-paper publication, and we are sharing the updated annotations here.*
+- **Scripts** contains the code for GPT generations, scoring, and reasoning.
+- `requirements.txt` lists down the requirements for running the code on the repository. The requirements can be installed using : `pip install -r requirements.txt`
+- `index.html` contains the code for the annotation task interface.
 
 ## Contributing
 
