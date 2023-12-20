@@ -1,0 +1,570 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+    
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="http://parsleyjs.org/dist/parsley.min.js"></script>
+
+<p></p>
+
+<crowd-instructions link-text="View instructions" link-type="button">
+
+    <short-summary>
+      <p>Go to the Detailed Instructions tab.</p>
+    </short-summary>
+
+    <detailed-instructions>
+      <!-- <h3>Provide more detailed instructions here</h3> -->
+    <p>
+        In our everyday life via the use of technology and media, we can come across many statements that exhibit gender bias. These statements can vary from being highly positively biased to highly negatively biased. 
+    We are interested in determining the degree of bias in such statements. Specifically, in each instance, you will be given four statements. Your task is to mark: 
+    <ul>
+      <li>the statement that is the <span style="color: #993300;">MOST negatively biased (LEAST positively biased).</span></li>
+      <li>the statement that is the <span style="color: #993300;">LEAST negatively biased (MOST positively biased).</span></li>
+    </ul>
+    </p>
+    <p><strong>Purpose of the task:</strong></p>
+    <p>Your responses will be used to better understand the type, nature and degree of gender bias in text. 
+    </p>
+    <p><strong>Notes:</strong></p>
+    <p>
+      <ul>
+        <li>The statements included in this task may contain foul, abusive language (including but not limited to sexist, violent, vulgar or racist terms).</li>
+        <li>Think about bias only in terms of <span style="color: #993300;">GENDER</span> (ignore other forms of bias based on religion, caste, etc) </li>
+        <li>Try not to overthink the answer. <span style="color: #993300;">Let your instinct guide you.</span></li>
+        <li>There are a certain number of gold annotations interspersed throughout the data. We will keep track of your answers for these gold questions. <span style="color: #993300;">If you mark too many of these incorrectly, it might lead to rejection of your HITs, upon further scrutiny.</span> </li>
+      </ul>
+    </p>
+<p><strong>Instructions: </strong></p>
+<ul>
+  <li>The term <span style="color: #993300;">bias</span> refers to behavior that systematically discriminates or favors specific individuals or groups. <span style="color: #993300;">Gender bias</span> is defined as the systematic, unequal treatment based on one’s gender.</li>
+  <li>Consider <span style="color: #993300;">'negatively biased statements'</span> to be statements that discriminate against a specific gender. This includes but is not limited to: 
+    <ul>
+    <li>stereotypical associations: Girls should learn to cook / Girls like to gossip / Girls cannot be doctors or engineers / Men are always interested in sports.</li>
+    <li>Systemic assumption: Women don’t know how to manage money / Men should earn for the family. </li>
+    <li>Patronization: You are too articulate for a woman / like he being a guy can take care of kids.</li>
+    <li>Use of metaphors, slangs, denigrating a particular gender.</li>
+  </ul>
+  </li>
+  <br>
+  <li>Consider <span style="color: #993300;">'positively biased statements'</span> to be statements that favor a specific gender but not at the cost of another gender. These statements can express breaking of negative stereotypes or systemic assumptions commonly associated with that gender.
+    <ul>
+    <li>Mohan helped Priya to cook, like any good husband should.</li>
+    <li>Anjali being a girl went to Delhi for her studies, she is an inspiration.</li>
+    <li>Rani is a computer engineer.</li>
+    <li>Women are great leaders.</li>
+    <li>women bring a unique perspective and skillset to our team</li>
+    <li>Men can be emotional. </li>
+    </ul>
+    <br>
+    For example "As usual, the hardworking wife scrubbed the stain on the floor while the typical husband watched the TV" will not qualify as a positively biased statement.
+  </li>
+  <br>
+  <li>For the MOST negatively biased (LEAST positively biased) question: If all four statements are not negatively biased, then select the statement that is most negative.
+    If <span style="color: #993300;">two (or more) statements are equally negatively biased</span>, and both are  MOST negatively biased, then choose any one of them.</li>
+  <br>
+  <li>For the LEAST negatively biased (MOST positively biased) question: If all four statements are not positively biased, then select the statement that is most positive or least negative. 
+    If <span style="color: #993300;">two (or more) statements are equally positively biased</span>, and both are MOST  positively biased, then choose any one of them. Between a neutral and a positive statement, choose the positive statement.
+</li>
+  <br>
+  <li>You cannot pick the same statement for both the categories.</li>
+    <br>
+
+    <!-- <li> Responses that are not in accordance with the instructions will not be paid for.</li> -->
+</ul> 
+
+    </detailed-instructions>
+    <positive-example>
+    <p>Q1. Which of the four statements below is MOST NEGATIVELY biased (least positively biased)?</p>
+      <p>1. Women are too emotional.</p>
+    <p>2. The doctor treated the patient with care and expertise.</p>
+    <p>3. He has a passion for helping others.</p>
+    <p>4. Those men were creepy</p>
+    
+    <p><strong>Most Negatively Biased / Least Positively Biased:</strong> <span style="color: #993300;">Statement 1</span></p> 
+
+    <p>Q2. Which of the four statements below is LEAST NEGATIVELY biased (most positively biased)?</p>
+    <p>1. Women are too emotional.</p>
+        <p>2. The doctor treated the patient with care and expertise.</p>
+        <p>3. He has a passion for helping others.</p>
+        <p>4. Those men were creepy</p>
+      
+    <p><strong>Least Negatively Biased / Most Positively Biased:</strong> <span style="color: #993300;">Statement 3</span></p> 
+    </positive-example>
+    <positive-example>
+    <p>Q1. Which of the four statements below is MOST NEGATIVELY biased (least positively biased)?</p>
+    <p>1. He's weak, like a girl.</p>
+        <p>2. Girls aren't good at math.</p>
+        <p>3. The engineer designed a innovative solution for the project.</p>
+        <p>4. she demonstrates strong communication skills in her interactions.</p>
+        
+        <p><strong>Most Negatively Biased / Least Positively Biased:</strong> <span style="color: #993300;">Statement 1 or 2</span> (choose either)</p>
+
+    <p>Q2. Which of the four statements below is LEAST NEGATIVELY biased (most positively biased)?</p>
+      <p>1. He's weak, like a girl.</p>
+    <p>2. Girls aren't good at math.</p>
+    <p>3. The engineer designed a innovative solution for the project.</p>
+    <p>4. she demonstrates strong communication skills in her interactions.</p>
+  
+    <p><strong>Least Negatively Biased / Most Positively Biased:</strong> <span style="color: #993300;">Statement 4</span></p>
+    </positive-example>
+    <positive-example>
+    <p>Q1. Which of the four statements below is MOST NEGATIVELY biased (least positively biased)?</p>
+      <p>1. Rani despite the odds became a computer engineer.</p>
+    <p>2. Women don’t belong in STEM fields</p>
+    <p>3. He is good for nothing</p>
+    <p>4. Women are inferior to men and should be subservient to men.</p>
+    
+    <p><strong>Most Negatively Biased / Least Positively Biased:</strong> <span style="color: #993300;">Statement 4</span></p>
+
+    <p>Q2. Which of the four statements below is LEAST NEGATIVELY biased (most positively biased)?</p>
+    <p>1. Rani despite the odds became a computer engineer.</p>
+        <p>2. Women don’t belong in STEM fields</p>
+        <p>3. He is good for nothing</p>
+        <p>4. Women are inferior to men and should be subservient to men.</p>
+        
+    <p><strong>Least Negatively Biased / Most Positively Biased:</strong> <span style="color: #993300;">Statement 1</span></p>
+    </positive-example>
+    <negative-example> 
+    Examples of inappropriate responses for the questions on the left include:<br>
+    - Not selecting any option.<br>
+    - Selecting an option other than the correct answer(s).<br>
+</negative-example> 
+  </crowd-instructions>
+
+<!--page starts here -->
+<p></p>
+<fieldset>
+<font size="5">
+<strong>
+    <span style="color: #993300;">
+    <u>
+    Summary Instructions
+    </u>
+    </span>
+</strong>
+</font>
+<p>  
+<p>
+        <strong>Introduction:</strong> 
+    <p>
+        In each HIT, you will be given four target statements. Your task is to mark:
+        <ul>
+          <li>the statement that is the <span style="color: #993300;">MOST negatively biased (LEAST positively biased).</span></li>
+          <li>the statement that is the <span style="color: #993300;">LEAST negatively biased (MOST positively biased).</span></li>
+        </ul>
+    See further details in the <span style="color: #993300;">‘View Instructions’>‘Detailed Instructions’</span> and <span style="color: #993300;">‘Examples’</span> tabs.
+    </p>
+    <p><strong>Important Notes</strong></p>
+<ul>
+    <li>Think about bias only in terms of <span style="color: #993300;">GENDER</span> (ignore other forms of bias based on religion, caste, etc) </li>
+    <br>
+    <li>Consider <span style="color: #993300;">'negatively biased statements'</span> to be statements that discriminate against a specific gender. This includes but is not limited to: stereotypical associations, systemic assumption, patronization, and Use of metaphors, slangs, denigrating a particular gender.</li>
+    <br>
+    <li>Consider <span style="color: #993300;">'positively biased statements'</span> to be statements that favor a specific gender. These statements can express breaking of negative stereotypes or systemic assumptions commonly associated with that gender.</li>
+    <br>
+    <li>For the MOST negatively biased (LEAST positively biased) question: If all four statements are not negatively biased, then select the statement that is most negative.
+    If <span style="color: #993300;">two (or more) statements are equally negatively biased</span>, and both are  MOST negatively biased, then choose any one of them.</li>
+    <br>
+    <li>For the LEAST negatively biased (MOST positively biased) question: If all four statements are not positively biased, then select the statement that is most positive or least negative. 
+    If <span style="color: #993300;">two (or more) statements are equally positively biased</span>, and both are MOST  positively biased, then choose any one of them. Between a neutral and a positive statement, choose the positive statement.</li>
+    <br>
+  <li>You cannot pick the same statement for both the categories.</li>
+  <br>
+  <!-- <li>Responses that are not in accordance with the instructions will not be paid for.</li> -->
+</ul>
+
+    </p>
+
+<p>NOTE: There are a certain number of gold annotations interspersed throughout the data. We will keep track of your answers for these gold questions. <span style="color: #993300;">If you mark too many of these incorrectly, it might lead to rejection of your HITs, upon further scrutiny.</span> </p>
+</fieldset>
+<p></p>
+<p></p>
+<!-- COMMENT TUPLE 1 -->
+
+<p>Q1. From the four statements below, choose the statement which is <strong>LEAST</strong> NEGATIVELY biased (most positively biased) and the statement which is <strong>MOST</strong> NEGATIVELY biased (least positively biased). </p>
+<table>
+  <tr>
+    <th>Least Negatively Biased</th>
+    <th>Statement</th>
+    <th>Most Negatively Biased</th>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least1" id="Least-1a" data-min-check="1" required value="a" ></td>
+    <td>${1a}</td>
+    <td><input type="radio" name="Most1" id="Most-1a" data-min-check="1" required value="a" ></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least1" id="Least-1b" data-min-check="1" required value="b" ></td>
+    <td>${1b}</td>
+    <td><input type="radio" name="Most1" id="Most-1b" data-min-check="1" required value="b" ></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least1" id="Least-1c" data-min-check="1" required value="c" ></td>
+    <td>${1c}</td>
+    <td><input type="radio" name="Most1" id="Most-1c" data-min-check="1" required value="c" ></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least1" id="Least-1d" data-min-check="1" required value="d" ></td>
+    <td>${1d}</td>
+     <td><input type="radio" name="Most1" id="Most-1d" data-min-check="1" required value="d" ></td>
+  </tr>
+</table>
+<p></p>
+
+<!-- Prepended text-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="prependedtext"></label>
+  <div class="col-md-8">
+    <div class="input-group">
+      <span class="input-group-addon">Feedback (optional):</span>
+      <input id="comment-1" name="comment-1" class="form-control" placeholder="" type="text">
+    </div>
+  </div>
+</div>
+<br />
+<hr>
+<br>
+<p></p>
+<p></p>
+<!-- COMMENT TUPLE 2 -->
+
+<p>Q2. From the four statements below, choose the statement which is <strong>LEAST</strong> NEGATIVELY biased (most positively biased) and the statement which is <strong>MOST</strong> NEGATIVELY biased (least positively biased).</p>
+<table>
+  <tr>
+    <th>Least Negatively Biased</th>
+    <th>Statement</th>
+    <th>Most Negatively Biased</th>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least2" id="Least-2a" data-min-check="1" required value="a"></td>
+    <td>${2a}</td>
+    <td><input type="radio" name="Most2" id="Most-2a" data-min-check="1" required value="a"></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least2" id="Least-2b" data-min-check="1" required value="b"></td>
+    <td>${2b}</td>
+    <td><input type="radio" name="Most2" id="Most-2b" data-min-check="1" required value="b"></td>
+  </tr>
+  <tr>
+    <td> <input type="radio" name="Least2" id="Least-2c" data-min-check="1" required value="c"></td>
+    <td>${2c}</td>
+    <td><input type="radio" name="Most2" id="Most-2c" data-min-check="1" required value="c"></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least2" id="Least-2d" data-min-check="1" required value="d"></td>
+    <td>${2d}</td>
+    <td><input type="radio" name="Most2" id="Most-2d" data-min-check="1" required value="d"></td>
+  </tr>
+</table>
+<p></p>
+
+<!-- Prepended text-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="prependedtext"></label>
+  <div class="col-md-8">
+    <div class="input-group">
+      <span class="input-group-addon">Feedback (optional):</span>
+      <input id="comment-2" name="comment-2" class="form-control" placeholder="" type="text">
+    </div>
+  </div>
+</div>
+<br />
+<hr>
+<br>
+<p></p>
+<p></p>
+<!-- COMMENT TUPLE 3 -->
+
+<p>Q3. From the four statements below, choose the statement which is <strong>LEAST</strong> NEGATIVELY biased (most positively biased) and the statement which is <strong>MOST</strong> NEGATIVELY biased (least positively biased).</p>
+<table>
+  <tr>
+    <th>Least Negatively Biased</th>
+    <th>Statement</th>
+    <th>Most Negatively Biased</th>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least3" id="Least-3a" data-min-check="1" required value="a"></td>
+    <td>${3a}</td>
+    <td><input type="radio" name="Most3" id="Most-3a" data-min-check="1" required value="a"></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least3" id="Least-3b" data-min-check="1" required value="b"></td>
+    <td>${3b}</td>
+    <td><input type="radio" name="Most3" id="Most-3b" data-min-check="1" required value="b"></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least3" id="Least-3c" data-min-check="1" required value="c"></td>
+    <td>${3c}</td>
+    <td><input type="radio" name="Most3" id="Most-3c" data-min-check="1" required value="c"></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least3" id="Least-3d" data-min-check="1" required value="d"></td>
+    <td>${3d}</td>
+    <td><input type="radio" name="Most3" id="Most-3d" data-min-check="1" required value="d"></td>
+  </tr>
+</table>
+<p></p>
+
+<!-- Prepended text-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="prependedtext"></label>
+  <div class="col-md-8">
+    <div class="input-group">
+      <span class="input-group-addon">Feedback (optional):</span>
+      <input id="comment-3" name="comment-3" class="form-control" placeholder="" type="text">
+    </div>
+  </div>
+</div>
+<br />
+<hr>
+<br>
+<p></p>
+<p></p>
+
+
+<!-- COMMENT TUPLE 4 -->
+
+<p>Q4. From the four statements below, choose the statement which is <strong>LEAST</strong> NEGATIVELY biased (most positively biased) and the statement which is <strong>MOST</strong> NEGATIVELY biased (least positively biased).</p>
+<table>
+  <tr>
+    <th>Least Negatively Biased</th>
+    <th>Statement</th>
+    <th>Most Negatively Biased</th>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least4" id="Least-4a" data-min-check="1" required value="a"></td>
+    <td>${4a}</td>
+    <td><input type="radio" name="Most4" id="Most-4a" data-min-check="1" required value="a"></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least4" id="Least-4b" data-min-check="1" required value="b"></td>
+    <td>${4b}</td>
+    <td><input type="radio" name="Most4" id="Most-4b" data-min-check="1" required value="b"></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least4" id="Least-4c" data-min-check="1" required value="c"></td>
+    <td>${4c}</td>
+    <td><input type="radio" name="Most4" id="Most-4c" data-min-check="1" required value="c"></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least4" id="Least-4d" data-min-check="1" required value="d"></td>
+    <td>${4d}</td>
+    <td><input type="radio" name="Most4" id="Most-4d" data-min-check="1" required value="d"></td>
+  </tr>
+</table>
+<p></p>
+
+<!-- Prepended text-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="prependedtext"></label>
+  <div class="col-md-8">
+    <div class="input-group">
+      <span class="input-group-addon">Feedback (optional):</span>
+      <input id="comment-4" name="comment-4" class="form-control" placeholder="" type="text">
+    </div>
+  </div>
+</div>
+<br />
+<hr>
+<br>
+<p></p>
+<p></p>
+
+<!-- COMMENT TUPLE 5 -->
+
+<p>Q5. From the four statements below, choose the statement which is <strong>LEAST</strong> NEGATIVELY biased (most positively biased) and the statement which is <strong>MOST</strong> NEGATIVELY biased (least positively biased).</p>
+<table>
+  <tr>
+    <th>Least Negatively Biased</th>
+    <th>Statement</th>
+    <th>Most Negatively Biased</th>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least5" id="Least-5a" data-min-check="1" required value="a"></td>
+    <td>${5a}</td>
+    <td><input type="radio" name="Most5" id="Most-5a" data-min-check="1" required value="a"></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least5" id="Least-5b" data-min-check="1" required value="b"></td>
+    <td>${5b}</td>
+    <td><input type="radio" name="Most5" id="Most-5b" data-min-check="1" required value="b"></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least5" id="Least-5c" data-min-check="1" required value="c"></td>
+    <td>${5c}</td>
+    <td><input type="radio" name="Most5" id="Most-5c" data-min-check="1" required value="c"></td>
+  </tr>
+  <tr>
+    <td><input type="radio" name="Least5" id="Least-5d" data-min-check="1" required value="d"></td>
+    <td>${5d}</td>
+    <td><input type="radio" name="Most5" id="Most-5d" data-min-check="1" required value="d"></td>
+  </tr>
+</table>
+<p></p>
+
+<!-- Prepended text-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="prependedtext"></label>
+  <div class="col-md-8">
+    <div class="input-group">
+      <span class="input-group-addon">Feedback (optional):</span>
+      <input id="comment-5" name="comment-5" class="form-control" placeholder="" type="text">
+    </div>
+  </div>
+</div>
+<br />
+<hr>
+<br>
+<p></p>
+<p></p>
+
+<p><param name="gold" id="gold" value="${gold}">
+	<param name="type" id="type" value="${type}">
+	<param name="gold_label1" id="gold_label1" value="${gold_label1}">
+	<param name="gold_label2" id="gold_label2" value="${gold_label2}">		
+	<param name="number" id="number" value="${number}">	
+    <input type="hidden" name="prev" id="prev" value=0>
+
+</p>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p id="modal_text"></p>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+ $('#mturk_form').parsley();
+</script>
+</crowd-form>
+<!--Page ends here -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	table {
+  		border-collapse: collapse;
+			}
+
+	td,
+	th {
+	  border: 1px solid #ccc;
+	  padding: 10px;
+	}
+
+	th:empty {
+	  border: 0;
+	}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(":radio").change(function() {
+  $(this).closest('table').find('tr').each(function() {
+    let $tr = $(this);
+    $tr.find(':radio:not(:checked)').prop('disabled', $tr.find(':radio:checked').length == 1);
+  });
+});
+
+</script>
+
+<!-- <script>
+	var x = document.getElementById("pusca").value;
+	alert(x);
+</script> -->
+
+<script type="text/javascript">
+document.querySelector('crowd-form').onsubmit = function(e ) {
+var gold = document.getElementById("gold").value;
+var type = document.getElementById("type").value;
+var gold_label1 = document.getElementById("gold_label1").value;
+var gold_label2 = document.getElementById("gold_label2").value;
+var number = document.getElementById("number").value;
+var question = type+number;
+
+if(gold == "1"){
+  var ele = document.getElementsByName(question);
+            for(i = 0; i < ele.length; i++) { 
+                if(ele[i].checked) {
+                	var x = (ele[i].value);
+                }   
+			}
+			
+			if(x != gold_label1 && x != gold_label2){
+				// Get the modal
+				document.getElementById("prev").value = x;
+				var modal = document.getElementById("myModal");
+				var modal_text = document.getElementById("modal_text");
+				if (gold_label2 != '0'){
+				modal_text.innerHTML = "You marked the gold question incorrectly. In Q. "+ number.bold() +" the "+type.bold()+" offensive answer is options: "+gold_label1.bold()+" , "+gold_label2.bold();}
+				else{
+				modal_text.innerHTML = "You marked the gold question incorrectly. In Q. "+ number.bold() +" the "+type.bold()+" offensive answer is option: "+gold_label1.bold();}
+				// Get the <span> element that closes the modal
+				var span = document.getElementsByClassName("close")[0];
+
+				modal.style.display = "block";
+
+				// When the user clicks on <span> (x), close the modal
+				span.onclick = function() {
+				  modal.style.display = "none";
+				}
+				e.preventDefault();
+			}
+    }
+}
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
