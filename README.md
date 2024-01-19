@@ -70,6 +70,39 @@ This repository contains the dataset “Fifty Shades of Bias” (FSB) along with
 - `requirements.txt` lists down the requirements for running the code on the repository. The requirements can be installed using : `pip install -r requirements.txt`
 - `index.html` contains the code for the annotation task interface.
 
+## Datasets Used
+
+- **StereoSet**: [StereoSet: Measuring stereotypical bias in pretrained language models](https://github.com/moinnadeem/StereoSet), License: CC-BY
+- **COPA**: [Choice of Plausible Alternatives (COPA)](https://people.ict.usc.edu/~gordon/copa.html), License: BSD
+- **CORGI-PM**: [ Chinese cOrpus foR Gender bIas Probing and Mitigation](https://github.com/yizhilll/CORGI-PM), License: arXiv.org - Non-exclusive license to distribute
+
+## Running the script
+
+Requirements: 
+- GPT-3.5-Turbo access is required for running this code.
+- Place your API version, type, and base in utils.py file.
+- Place your GPT API key in a text file and pass the path as an argument when running the scripts.
+
+Files for obtaining biased sentence, reasons, or scores can be run as:
+
+- **generate_biased_sentences.py**
+
+```bash
+python -m scripts/generate_biased_sentences --keypath PATH_TO_GPT_KEY --seed_dataset_name FILENAME_FOR_GENERATED_TEXT --task TYPE_OF_PROMPT --ic_file INCONTEXT_EXAMPLES_FILE --queries_file SEED_SENTENCE_FILE
+```
+
+- **gpt_reasoning.py**
+
+```bash
+python -m scripts/generate_biased_sentences --keypath PATH_TO_GPT_KEY --queries_file FILE_WITH_SENTENCE_AND_SCORE
+```
+
+- **gpt_scoring.py**
+
+```bash
+python -m scripts/generate_biased_sentences --keypath PATH_TO_GPT_KEY --queries_file FILE_WITH_SENTENCE
+```
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

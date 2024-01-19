@@ -95,7 +95,7 @@ if __name__ == '__main__':
     parser.add_argument('--root', type = str, default = '../data/model_inferences/')
     parser.add_argument('--model', type = str, default = "gpt-35-turbo") # Add a deployment name here
     parser.add_argument('--keypath', type = str)
-    parser.add_argument('--seed_dataset_name', type=str, default = 'explicit')
+    parser.add_argument('--seed_dataset_name', type=str, default = 'explicit_completion')
     parser.add_argument('--sleep_period', type=float, default = 1)
     parser.add_argument('--task', type=str, default = 'completion')
     parser.add_argument('--batch_size', type = int, default = 1)
@@ -112,7 +112,7 @@ if __name__ == '__main__':
     if not os.path.exists(args.root):
         os.makedirs(args.root)
     
-    response_logger_file = f'{args.root}{args.seed_dataset_name}_generated_data_karya.txt'
+    response_logger_file = f'{args.root}{args.seed_dataset_name}_generated_data.txt'
     
     
     if args.queries_file: 
