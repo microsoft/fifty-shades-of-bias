@@ -94,13 +94,13 @@ python -m scripts/generate_biased_sentences --keypath PATH_TO_GPT_KEY --seed_dat
 - **gpt_reasoning.py**
 
 ```bash
-python -m scripts/generate_biased_sentences --keypath PATH_TO_GPT_KEY --queries_file FILE_WITH_SENTENCE_AND_SCORE
+python -m scripts/gpt_reasoning --keypath PATH_TO_GPT_KEY --queries_file FILE_WITH_SENTENCE_AND_SCORE
 ```
 
 - **gpt_scoring.py**
 
 ```bash
-python -m scripts/generate_biased_sentences --keypath PATH_TO_GPT_KEY --queries_file FILE_WITH_SENTENCE
+python -m scripts/gpt_scoring --keypath PATH_TO_GPT_KEY --queries_file FILE_WITH_SENTENCE
 ```
 
 ## Contributing
