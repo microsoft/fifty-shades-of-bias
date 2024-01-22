@@ -74,7 +74,6 @@ This repository contains the dataset “Fifty Shades of Bias” (FSB) along with
 
 - **StereoSet**: [StereoSet: Measuring stereotypical bias in pretrained language models](https://github.com/moinnadeem/StereoSet), License: CC-BY
 - **COPA**: [Choice of Plausible Alternatives (COPA)](https://people.ict.usc.edu/~gordon/copa.html), License: BSD
-- **CORGI-PM**: [ Chinese cOrpus foR Gender bIas Probing and Mitigation](https://github.com/yizhilll/CORGI-PM), License: arXiv.org - Non-exclusive license to distribute
 
 ## Running the script
 
